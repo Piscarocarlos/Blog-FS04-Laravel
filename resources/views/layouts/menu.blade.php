@@ -14,10 +14,13 @@
                     <a class="nav-link" href="{{ route('categories') }}">Catégories</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Articles</a>
+                    <a class="nav-link" href="{{ route('posts.index') }}">Articles</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('test.index') }}">Liste des tests</a>
                 </li>
             </ul>
         </div>
