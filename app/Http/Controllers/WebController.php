@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class WebController extends Controller
 {
@@ -26,5 +28,18 @@ class WebController extends Controller
         } else {
             // post introuvable
         }
+    }
+
+    public function sendContact(Request $request)
+    {
+        // validate
+
+        Mail::to('admin@example.com')->send(new ContactMail(
+            $request->name,
+            $request->email,
+            $request->content
+        ));
+
+        return back();
     }
 }

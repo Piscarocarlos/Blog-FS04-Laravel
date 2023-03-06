@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\CarlosController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\WebController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -34,3 +36,11 @@ Route::post('store-test', [TestController::class, 'store'])->name('test.store');
 Route::resource('posts', PostController::class);
 
 Route::get('detail-post/{id}', [WebController::class, 'detailPost'])->name('post.detail');
+
+Route::post('send-contact', [WebController::class, 'sendContact'])->name('contact');
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('logout', [HomeController::class, 'logout'])->name('logout');
