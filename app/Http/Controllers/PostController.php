@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\CommentNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -101,6 +103,11 @@ class PostController extends Controller
         $comment->description = $request->content;
 
         $comment->save();
+
+        $user = User::where('user_type', 'admin')->first();
+        $post = Post::find($request->post_id);
+        $user->notify(new CommentNotification($post));
+
         flashy()->success("Votre commentaire a été rajouté avec succès");
         return back();
     }

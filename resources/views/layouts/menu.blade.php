@@ -29,7 +29,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="bi bi-bell fs-5"></i> 
+                            <span class="badge bg-primary">{{ count(Auth::user()->unreadNotifications) }}</span>
+                        </a>
+                    </li>
                 @endauth
+
             </ul>
         </div>
     </div>
