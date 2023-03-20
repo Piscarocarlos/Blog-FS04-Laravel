@@ -185,7 +185,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        MercurySeries\Flashy\FlashyServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -210,6 +210,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Flashy' => MercurySeries\Flashy\Flashy::class,
     ])->toArray(),
 
 ];

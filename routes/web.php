@@ -44,3 +44,4 @@ Auth::routes();
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('logout', [HomeController::class, 'logout'])->name('logout');
+Route::post('store-comment',[PostController::class,'commentStore'])->name('comment.store');

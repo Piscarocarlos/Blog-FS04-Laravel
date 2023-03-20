@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Comment;
 use App\Models\Post;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -86,5 +88,20 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function commentStore(Request $request) {
+        $request->validate([
+            'content' =>'required|min:2'
+        ]);
+
+        $comment = new Comment();
+        $comment->user_id = Auth::id();
+        $comment->post_id = $request->post_id;
+        $comment->description = $request->content;
+
+        $comment->save();
+        flashy()->success("Votre commentaire a été rajouté avec succès");
+        return back();
     }
 }
