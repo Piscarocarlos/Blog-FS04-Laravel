@@ -8,16 +8,12 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('index') }}">Home</a>
+                    <a class="nav-link {{ isRouteActive('index') }}" aria-current="page" href="{{ route('index') }}">Home</a>
                 </li>
+                {!! routeActive('categories', "Categories") !!}
+                {!! routeActive('posts.index', "Articles") !!}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories') }}">Catégories</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('posts.index') }}">Articles</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contact</a>
+                    <a class="nav-link {{ isRouteActive('contact-us') }}" href="{{ route('contact-us') }}">Contact</a>
                 </li>
                 @guest
                     <li class="nav-item">

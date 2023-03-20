@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [WebController::class, 'index'])->name('index');
 
-Route::get('contact-us', [WebController::class, 'showContactView'])->name('contact');
+Route::get('contact-us', [WebController::class, 'showContactView'])->name('contact-us');
+Route::post('send-contact', [WebController::class, 'sendContact'])->name('contact');
 
 // Routes categories
 
@@ -37,7 +38,6 @@ Route::resource('posts', PostController::class);
 
 Route::get('detail-post/{id}', [WebController::class, 'detailPost'])->name('post.detail');
 
-Route::post('send-contact', [WebController::class, 'sendContact'])->name('contact');
 
 Auth::routes();
 
